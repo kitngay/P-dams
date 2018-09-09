@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jP-Dams Mobile Web App</title>
+<link href="jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css"/>
+<link href="jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+            <script language="JavaScript">
+			function chkConfirm()
+			{
+				if(confirm('Do you want to reset ?')==true)
+				{
+					alert('Reset Complete');
+				}
+			}
+			function Ft()
+			{
+				if(confirm('Do you want to set this ?')==true)
+				{
+					alert('succeed');
+				}
+			}
+			</script>
+</head> 
+<body> 
+<div data-role="page" id="P-DAMS">
+	<div data-role="header">
+		<h1>P-DAMS</h1>
+	</div>
+	<div data-role="content">	
+		<ul data-role="listview">
+			<li><a href="#Setting">Setting</a></li>
+            <li><a href="#Graph">Graph</a></li>
+		</ul>		
+	</div>
+</div>
+
+<div data-role="page" id="Setting">
+	<div data-role="header">
+		<h1><font size="6">Setting</font></h1>
+	</div>
+	<div data-role="content">
+    		
+    		<div align="center"><font size="5" ><b>Alert</b></font></div>
+            <input type="button" name="btnAlert" value="OFF" OnClick="Ft()">
+            <input type="button" name="btnAlert" value="1000  Bath" OnClick="Ft()">
+            <input type="button" name="btnAlert" value="5000  Bath" OnClick="Ft()">
+            <input type="button" name="btnAlert" value="10000 Bath" OnClick="Ft()">
+            <br><br>
+            <div align="center"><font size="5" ><b>Set your state home</b></font></div>
+            <input type="button" name="btnState" value="House" OnClick="Ft()">
+            <input type="button" name="btnState" value="Small Business" OnClick="Ft()">
+            <input type="button" name="btnState" value="Middium Business" OnClick="Ft()">
+            <input type="button" name="btnState" value="Big Business" OnClick="Ft()">
+            <input type="button" name="btnState" value="Specific Business" OnClick="Ft()">
+            <input type="button" name="btnState" value="Non-profit organization" OnClick="Ft()">
+            <br><br>
+            <input type="button" name="btnReset" value="Reset" OnClick="chkConfirm()">
+            <a href="#P-DAMS"><button type="button" >Back</button></a>
+    </div>
+</div>
+
+<div data-role="page" id="Graph">
+	<div data-role="header">
+		<h1>Graph</h1>
+	</div>
+	<div data-role="content">	
+		Content		
+	</div>
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jP-Dams Mobile Web App</title>
+<link href="jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css"/>
+<link href="jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script language="JavaScript">
+			function chkConfirm()
+			{
+				if(confirm('Do you want to reset ?')==true)
+				{
+					alert('Reset Complete');
+				}
+			}
+			function AlertMeOFF()
+			{
+				if(confirm('Do you want to turn off ?')==true)
+				{
+					alert('succeed');
+				}
+			}
+			function AlertMe1000()
+			{
+				if(confirm('Do you want to set this ?')==true)
+				{
+					alert('succeed');
+				}
+			}
+		function startTimer(duration, display) {
+        var timer = duration, units;
+        var cost = 0;
+        setInterval(function () {
+            units = parseInt(timer , 10);
+            units = units;
+            if (units<=15) 
+            	cost = units * 2.3488;
+            if (15 < units <= 25)
+            	cost = units * 2.9882;
+            if (25 < units <= 35) 
+            	cost = units * 3.2405;
+            if (35 < units <= 100)
+            	cost = units * 3.6237;
+            if (100 < units <= 150)
+            	cost = units * 3.7171;
+            if (150 < units <= 400) 
+            	cost = units * 4.2218;
+            if (units > 400)
+            	cost = units * 4.4217;
+            // display.textContent = units;
+			if (cost >= 1000)
+			{
+				alert('A price is more than 1000 bath');
+			}
+            	display.textContent = cost.toFixed(2);
+            if (timer++ < 0) {
+                //window.location = "http://www.example.com";
+                clearInterval(timer);
+            }
+        }, 1000);
+    }
+    window.onload = function () {
+        var fiveMinutes = 0,
+            display = document.querySelector('#time');
+        startTimer(fiveMinutes, display);
+    };
+	 google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Hour', 'today','yesterday'],
+          ['0',  400 ,500],
+          ['4',   500,550],
+          ['8',  550 ,600],
+          ['12',  800 ,700]
+        ]);
+        var options = {
+          title: 'price graph',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        chart.draw(data, options);
+      }
+</script>
+</head> 
+<body>
+<div data-role="page" id="P-DAMS">
+	<div data-role="header">
+		<h1>P-DAMS</h1>
+	</div>  
+  <div align="center"><br><br>
+  <br><font size="6">ELECTRIC PRICE</font><br>
+  <br><font size="10"><span id="time"></span></font></div>
+  <br>
+  <br><br><br><br><br>
+    <form id="form1" runat="server"></form>
+	<div data-role="content">	
+		<ul data-role="listview">
+			<li><a href="#Setting">Setting</a></li>
+            <li><a href="#Graph">Graph</a></li>
+		</ul>
+	</div>
+</div>
+<div data-role="page" id="Setting">
+	<div data-role="header">
+		<h1><font size="6">Setting</font>	</h1>
+	</div>
+	<div data-role="content">	
+	  <div align="center"><font size="5" ><b>Alert</b></font></div>
+            <input type="button" name="btnAlert" value="OFF" OnClick="AlertMeOFF()">
+            <input type="button" name="btnAlert" value="1000  Bath" OnClick="AlertMe1000()">
+            <input type="button" name="btnAlert" value="5000  Bath" OnClick="AlertMe1000()">
+            <input type="button" name="btnAlert" value="10000 Bath" OnClick="AlertMe1000()">
+      <br><br>
+      <div align="center"><font size="5" ><b>Set your state home</b></font></div>
+            <input type="button" name="btnState" value="House" OnClick="Ft()">
+            
+            <input type="button" name="btnState" value="Small Business" OnClick="Ft()">
+            <input type="button" name="btnState" value="Middium Business" OnClick="Ft()">
+            <input type="button" name="btnState" value="Big Business" OnClick="Ft()">
+            <input type="button" name="btnState" value="Specific Business" OnClick="Ft()">
+            <input type="button" name="btnState" value="Non-profit organization" OnClick="Ft()">
+            <br><br>
+            <input type="button" name="btnReset" value="Reset" OnClick="chkConfirm()">
+            <a href="#P-DAMS"><button type="button" >Back</button></a>
+    </div>
+</div>
+<div data-role="page" id="Graph">
+	<div data-role="header">
+		<h1>Graph</h1>
+	</div>
+	<div data-role="content">	
+		<div id="curve_chart" style="width: 500px; height: 600px"></div>
+	</div>
+		<a href="#P-DAMS"><button type="button" >Back</button></a>
+</div>
+</body>
+</html>
